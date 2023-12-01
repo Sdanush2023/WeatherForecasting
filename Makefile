@@ -1,5 +1,5 @@
 
-input:
+inp:
 	gcc DataInput.c -g -o input
 
 all:
@@ -11,8 +11,9 @@ all:
 	./pred
 	./send
 	
-	
+recv:
+	./recv	
 
 clean:
-	rm input sem pred read send *.txt
+	rm input sem pred recv send *.txt
 	
