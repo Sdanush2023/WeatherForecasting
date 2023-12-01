@@ -1,5 +1,5 @@
 
-inp:
+input:
 	gcc DataInput.c -g -o input
 
 all:
