@@ -11,7 +11,7 @@ all:
 	./pred
 	./send
 	
-recv:
+server:
 	./recv	
 
 clean:
