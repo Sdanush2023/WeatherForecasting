@@ -28,6 +28,7 @@ int main() {
     int shmid = shmget((key_t)2000, size, 0666);
     if (shmid == -1) {
         error_handler("error shared memory\n");
+        exit(EXIT_FAILURE);
     }
 
     struct WeatherData *shared_data = shmat(shmid, NULL, 0);
@@ -35,6 +36,7 @@ int main() {
 	if(semaphore == NULL)//SEM_FAILED == NULL
 	{
 		error_handler("sem_open fail");
+		exit(EXIT_FAILURE);
 		
 	}
 	else{
@@ -58,7 +60,6 @@ int main() {
 
 void error_handler(char *error){
 	printf("%s",error);
-	exit(0);
 }
 	
 	
@@ -153,4 +154,3 @@ void writeToFile(struct WeatherData *data) {
     fprintf(file, ": %s\n",img);
     fclose(file);
 }
-
