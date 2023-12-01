@@ -2,6 +2,7 @@
 #include<fcntl.h>
 #include<semaphore.h>
 
+void error_handler(char* arg);
  
 int main(){
 	int sval;
@@ -11,14 +12,19 @@ int main(){
     
    	 if(semaphore == NULL)//SEM_FAILED == NULL
 	{
-		perror("sem_open fail\n");
-		return -1;
+		error_handler("semaphore failed");
+		exit(1);
 	}
 	else{
 		printf("\n sem_open success");
 	}
 	int  n =sem_getvalue(semaphore,&sval);
 	if(n==-1){
-		printf("system call failed\n");
+		error_handler("call failed");
+		exit(1);	
 	}
+}
+
+void error_handler(char *arg){
+	perror("%s",arg);
 }
